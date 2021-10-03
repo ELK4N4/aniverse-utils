@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/aniverse-corporation/utils/issues"
   },
-  "homepage": "https://github.com/aniverse-corporation/utils#readme"
+  "homepage": "https://github.com/aniverse-corporation/utils#readme",
+  "dependencies": {
+    "yup": "^0.32.9"
+  }
 }
