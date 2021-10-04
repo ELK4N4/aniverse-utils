@@ -1,18 +1,30 @@
 import * as yup from "yup";
 
+const basicUserScheme = {
+    email: yup.string().email("Please enter a valid email"),
+    username: yup.string().min(3, "Please enter a username longer than 3"),
+    password: yup.string()
+}
+
 export const loginScheme = yup.object({
-    email: yup.string().email("Please enter a valid email").required("Email must be required!"),
-    password: yup.string().required(),
+    email: basicUserScheme.email.required("Email must be required!"),
+    password: basicUserScheme.password.required("Password must be required!"),
 });
 
 export const registerScheme = yup.object({
-    email: yup.string().email("Please enter a valid email").required("Email must be required!"),
-    username: yup.string().min(3, "Please enter a username longer than 3").required("Username must be required!"),
-    password: yup.string().required(),
+    email: basicUserScheme.email.required("Email must be required!"),
+    username: basicUserScheme.username.required("Username must be required!"),
+    password: basicUserScheme.password.required("Password must be required!"),
     confirmPassword: yup.string().when("password", {
         is: val => (val && val.length > 0 ? true : false),
         then: yup.string().oneOf([yup.ref("password")], "Password does not match"),
     }),
+});
+
+export const userUpdateScheme = yup.object({
+    email: basicUserScheme.email.required("Email must be required!"),
+    username: basicUserScheme.username.required("Username must be required!"),
+    password: basicUserScheme.password
 });
 
 export const fansubScheme = yup.object({
