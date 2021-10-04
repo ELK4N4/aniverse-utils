@@ -25,8 +25,17 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
       
-      - name: Update version in package.json
-        uses: maks-stupak/gh-action-bump-version@v7.1.5
+      - name: "Setup Node.js"
+        uses: "actions/setup-node@v1"
+        with:
+          node-version: 12
+      
+      - name: "Automated Version Bump"
+        uses: "phips28/gh-action-bump-version@master"
+        with:
+          tag-prefix: ''
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: NPM Publish
         uses: JS-DevTools/npm-publish@v1
