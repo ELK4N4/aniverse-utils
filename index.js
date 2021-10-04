@@ -3,7 +3,7 @@ import * as yup from "yup";
 const basicUserScheme = {
     email: yup.string().email("Please enter a valid email"),
     username: yup.string().min(3, "Please enter a username longer than 3"),
-    password: yup.string()
+    password: yup.string(),
 }
 
 export const loginScheme = yup.object({
