@@ -25,8 +25,11 @@ export const userUpdateScheme = yup.object({
     email: basicUserScheme.email.required("Email must be required!"),
     username: basicUserScheme.username.required("Username must be required!"),
     password: basicUserScheme.password,
+});
+
+export const profileUpdateScheme = yup.object({
     avatar: yup.string().url("Please enter a valid url image"),
-    banner: yup.string().url("Please enter a valid url image"),
+    banner: yup.string().url("Please enter a valid url image")
 });
 
 export const fansubScheme = yup.object({
