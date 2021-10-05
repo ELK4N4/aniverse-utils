@@ -42,6 +42,12 @@ export const memberScheme = yup.object({
     username: basicUserScheme.username.required("Username must be required!"),
 });
 
+export const episodeScheme = yup.object({
+    number: yup.number().min(1).required("Number must be required!"),
+    name: yup.string().min(3, "Please enter a username longer than 3").required("Name must be required!"),
+    link: yup.string().url("Please enter a valid url").required("Name must be required!")
+});
+
 export const animeScheme = yup.object({
     name: yup.object({
         hebrew: yup.string().min(3, "Please enter a Hebrew name longer than 3").required("Hebrew name must be required!"),
