@@ -38,11 +38,15 @@ export const fansubScheme = yup.object({
     banner: yup.string().url("Please enter a valid url image"),
 });
 
+export const memberScheme = yup.object({
+    username: basicUserScheme.username.required("Username must be required!"),
+});
+
 export const animeScheme = yup.object({
     name: yup.object({
-        hebrew: yup.string().min(2, "Please enter a Hebrew name longer than 3").required("Hebrew name must be required!"),
-        english: yup.string().min(2, "Please enter a English name longer than 3").required("English name must be required!"),
-        japanese: yup.string().min(2, "Please enter a Japanese name longer than 3").required("Japanese name must be required!"),
+        hebrew: yup.string().min(3, "Please enter a Hebrew name longer than 3").required("Hebrew name must be required!"),
+        english: yup.string().min(3, "Please enter a English name longer than 3").required("English name must be required!"),
+        japanese: yup.string().min(3, "Please enter a Japanese name longer than 3").required("Japanese name must be required!"),
     }),
     genres: yup.array().min(1).required("Genres number must be required!"),
     episodesNumber: yup.number().min(1).required("Episodes number must be required!"),
