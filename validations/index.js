@@ -28,8 +28,8 @@ export const userUpdateScheme = yup.object({
 });
 
 export const profileUpdateScheme = yup.object({
-    avatar: yup.string().url("Please enter a valid url image"),
-    banner: yup.string().url("Please enter a valid url image")
+    avatar: yup.string().url("Please enter a valid url image").nullable(true),
+    banner: yup.string().url("Please enter a valid url image").nullable(true)
 });
 
 export const fansubScheme = yup.object({
@@ -38,7 +38,7 @@ export const fansubScheme = yup.object({
     banner: yup.string().url("Please enter a valid url image"),
 });
 
-export const memberScheme = yup.object({
+export const usernameScheme = yup.object({
     username: basicUserScheme.username.required("Username must be required!"),
 });
 
@@ -58,4 +58,10 @@ export const animeScheme = yup.object({
     episodesNumber: yup.number().min(1).required("Episodes number must be required!"),
     summary: yup.string().min(10, "Please enter a summary longer than 10").required("Summary must be required!"),
     image: yup.string().url("Please enter a valid url image"),
+});
+
+export const banScheme = yup.object({
+    username: basicUserScheme.username.required("Username must be required!"),
+    expire: yup.date().required('Date is required'),
+    reason: yup.string().min(6, "Please enter a reason longer than 10").required("Reason must be required!"),
 });
