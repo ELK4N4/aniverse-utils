@@ -65,3 +65,8 @@ export const banScheme = yup.object({
     expire: yup.date().required('Date is required'),
     reason: yup.string().min(6, "Please enter a reason longer than 10").required("Reason must be required!"),
 });
+
+export const roleAndPermissionsUpdateScheme = yup.object({
+    role: yup.string().min(2, "Please enter a role longer than 2").required("Role must be required!"),
+    permissions: yup.array()
+});
