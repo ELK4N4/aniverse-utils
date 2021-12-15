@@ -21,6 +21,18 @@ export const registerScheme = yup.object({
     }).required("Confirm password must be required!"),
 });
 
+export const forgotPasswordScheme = yup.object({
+    email: basicUserScheme.email.required("Email must be required!"),
+});
+
+export const resetPasswordScheme = yup.object({
+    password: basicUserScheme.password.required("Password must be required!"),
+    confirmPassword: yup.string().when("password", {
+        is: val => (val && val.length > 0 ? true : false),
+        then: yup.string().oneOf([yup.ref("password")], "Password does not match"),
+    }).required("Confirm password must be required!"),
+});
+
 export const userUpdateScheme = yup.object({
     email: basicUserScheme.email.required("Email must be required!"),
     username: basicUserScheme.username.required("Username must be required!"),
