@@ -59,6 +59,10 @@ export const episodeScheme = yup.object({
     link: yup.string().url("Please enter a valid url").required("Link must be required!")
 });
 
+export const commentScheme = yup.object({
+    message: yup.string().min(1).required("Message must be required!"),
+});
+
 export const animeScheme = yup.object({
     name: yup.object({
         hebrew: yup.string().min(3, "Please enter a Hebrew name longer than 3").required("Hebrew name must be required!"),
