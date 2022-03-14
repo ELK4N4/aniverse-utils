@@ -59,8 +59,9 @@ export const episodeScheme = yup.object({
     link: yup.string().url("Please enter a valid url").required("Link must be required!")
 });
 
+const hasLettersRegex = /\S/;
 export const commentScheme = yup.object({
-    message: yup.string().min(1).required("Message must be required!"),
+    message: yup.string().min(1).required("Message must be required!").matches(hasLettersRegex, 'Message is empty!'),
 });
 
 export const animeTrackingScheme = yup.object({
