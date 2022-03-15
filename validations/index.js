@@ -1,12 +1,12 @@
 import * as yup from "yup";
 const invisibleCharcters = /^((?![\u0009\u00A0\u00AD\u034F\u061C\u115F\u1160\u17B4\u17B5\u180E\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u2000\u200A\u200B\u200C\u200D\u200E\u200F\u202F\u205F\u2060\u2061\u2062\u2063\u2064\u206A\u206B\u206C\u206D\u206E\u206F\u3000\u2800\u3164\uFEFF\uFFA0]).)*$/
 const hasLettersRegex = /\S/;
-const notValidString = /^((?!(^\s+)|[^א-תa-zA-Z0-9._ !]|\s+$).)*$/; // check if there are spaces in the beginning and in the end. also allow only letters in English and Hebrew and "!" "_" "."
+const notValidString = /^((?!(^\s+)|[^א-תa-zA-Z0-9._ !@#$%^&*()-_~{}]|\s+$).)*$/; // check if there are spaces in the beginning and in the end. also allow only letters in English and Hebrew and "!" "_" "."
 
 const basicUserScheme = {
     email: yup.string().email("Please enter a valid email"),
     username: yup.string().min(3, "Please enter a username longer than 3").matches(hasLettersRegex, 'Input is empty!').matches(invisibleCharcters, 'Illegal charcters!').matches(notValidString, 'Not valid string!'),
-    password: yup.string().matches(hasLettersRegex, 'Input is empty!').matches(invisibleCharcters, 'Illegal charcters!').matches(notValidString, 'Not valid string!'),
+    password: yup.string().matches(hasLettersRegex, 'Input is empty!'),
 }
 
 export const loginScheme = yup.object({
