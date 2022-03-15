@@ -40,15 +40,16 @@ export const userUpdateScheme = yup.object({
     email: basicUserScheme.email.required("Email must be required!"),
     username: basicUserScheme.username.required("Username must be required!"),
     password: basicUserScheme.password,
-    avatar: yup.string().url("Please enter a valid url image").nullable(true).matches(hasLettersRegex, 'Input is empty!').matches(invisibleCharcters, 'Illegal charcters!'),
-    banner: yup.string().url("Please enter a valid url image").nullable(true).matches(hasLettersRegex, 'Input is empty!').matches(invisibleCharcters, 'Illegal charcters!'),
+    avatar: yup.string().url("Please enter a valid url image").nullable(true),
+    banner: yup.string().url("Please enter a valid url image").nullable(true),
+    about: yup.string().nullable(true),
 });
 
 export const fansubScheme = yup.object({
     name: yup.string().min(2, "Please enter a fansub name longer than 2").required("Name must be required!"),
-    avatar: yup.string().url("Please enter a valid url image").matches(hasLettersRegex, 'Input is empty!').matches(invisibleCharcters, 'Illegal charcters!'),
-    banner: yup.string().url("Please enter a valid url banner").matches(hasLettersRegex, 'Input is empty!').matches(invisibleCharcters, 'Illegal charcters!'),
-    website: yup.string().url("Please enter a valid url website").matches(hasLettersRegex, 'Input is empty!').matches(invisibleCharcters, 'Illegal charcters!'),
+    avatar: yup.string().url("Please enter a valid url image"),
+    banner: yup.string().url("Please enter a valid url banner"),
+    website: yup.string().url("Please enter a valid url website"),
     description: yup.string().min(10, "Please enter a fansub name longer than 10").required("Description must be required!").matches(hasLettersRegex, 'Input is empty!').matches(invisibleCharcters, 'Illegal charcters!'),
 });
 
@@ -80,7 +81,7 @@ export const animeScheme = yup.object({
     genres: yup.array().min(1).required("Genres number must be required!"),
     episodesNumber: yup.number().min(1).required("Episodes number must be required!"),
     summary: yup.string().min(10, "Please enter a summary longer than 10").required("Summary must be required!").matches(hasLettersRegex, 'Input is empty!').matches(invisibleCharcters, 'Illegal charcters!'),
-    image: yup.string().url("Please enter a valid url image").matches(hasLettersRegex, 'Input is empty!').matches(invisibleCharcters, 'Illegal charcters!'),
+    image: yup.string().url("Please enter a valid url image"),
 });
 
 export const banScheme = yup.object({
